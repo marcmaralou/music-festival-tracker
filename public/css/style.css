@@ -1,0 +1,44 @@
+p {
+    margin: 10px 0 !important;
+}
+
+.login-container {
+    width: 400px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.fa-small {
+    font-size: 16px !important;
+}
+
+.btn-float {
+    float: left;
+    margin-right: 10px;
+}
+
+.img-small {
+    width: 180px;
+}
+
+.blackbg {
+    background-color: black;
+}
+
+.login-container {
+    width: 525px;
+}
+
+.darkmode {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+td {
+    border-style: hidden !important;
+}
+
+.body {
+    background-color: black;
+}

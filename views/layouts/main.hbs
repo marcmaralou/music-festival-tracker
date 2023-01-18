@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/test.css">
+    <title>StoryBooks</title>
+</head>
+<body onload="localStorage.getItem('mode') === 'dark' ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark'); document.querySelector('.ikon').innerHTML = localStorage.getItem('sunMoon')">
+    {{> _header}}
+    {{> _add_btn}}
+    <div class="container">
+        {{{body}}}  
+    </div>
+    {{> _darkmode}}
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.20.0/ckeditor.js" integrity="sha512-BcYkQlDTKkWL0Unn6RhsIyd2TMm3CcaPf0Aw1vsV28Dj4tpodobCPiriytfnnndBmiqnbpi2EelwYHHATr04Kg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/javascript/main.js"></script>
+    <script>
+        // initializing materialize stuff
+        M.Sidenav.init(document.querySelector('.sidenav'))
+        M.FormSelect.init(document.querySelector('#status'))
+        M.Datepicker.init(document.querySelector('.datepicker'))
+        M.Datepicker.init(document.querySelector('.datepicker2'))
+
+        // implementing the ckeditor
+        CKEDITOR.replace('body', {
+            plugins: 'wysiwygarea, toolbar, basicstyles, link'
+        })
+        
+        // checking mode, and if it's dark, styles ckeditor appropriately
+        if (localStorage.getItem('mode') == 'dark') {
+            CKEDITOR.on('instanceReady', function(e) {
+                e.editor.document.getBody().setStyle('background-color', 'rgba(0,0,0,0.59)')
+                e.editor.document.getBody().setStyle('color', 'white')
+            })
+            
+            CKEDITOR.config.uiColor = '#645D5B'
+        }
+    </script>
+</body>
+</html>
